@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Gallery from '../components/Gallery'
 
 export default function Home() {
     return (
-        <div>
-            <h>Home</h>
-        </div>
+        <Fragment>
+            <Gallery />
+        </Fragment>
     )
 }

@@ -8,20 +8,24 @@ import SingleItem from './pages/SingleItem'
 import About from './pages/About'
 import NotFound from './pages/Notfound'
 
+import GalleryState from './context/gallery/GalleryState'
+
 function App() {
   return (
     <Fragment>
-      <Router>
-        <Navbar />
-        <div className='container'>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/about' component={About} />
-            <Route exact path='/items/:item' component={SingleItem} />
-            <Route component={NotFound} />
-          </Switch>
-        </div>
-      </Router>
+      <GalleryState>
+        <Router>
+          <Navbar />
+          <div className='container'>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/about' component={About} />
+              <Route exact path='/items/:item' component={SingleItem} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+        </Router>
+      </GalleryState>
     </Fragment>
   );
 }
