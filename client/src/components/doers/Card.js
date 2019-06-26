@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import uuid from 'uuid'
 import { Link } from 'react-router-dom';
+import galleryContext from '../../context/gallery/GalleryContext'
+
 
 export default function Card(props) {
 
     const { id, title, img, description, tags } = props
 
+    const GalleryContext = useContext(galleryContext);    
+
     return (    
-        <Link 
-            className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-4 px-2 cursor-pointer' 
-            to={'gallery/' + id}>
+        <Link             
+            onClick={()=> GalleryContext.setItemId(id)}
+            to={'gallery/' + id}
+            className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-4 px-2 cursor-pointer'
+        >
             <div className="rounded overflow-hidden shadow hover:shadow-md">
                 <img className="w-full" src={img} alt="" />
                 <div className="px-6 py-4">

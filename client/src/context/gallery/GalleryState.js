@@ -5,6 +5,7 @@ import GalleryReducer from './GalleryReducer';
 import {
     GET_ITEMS,
     GET_ITEM,
+    SET_ITEM_ID,
     SET_LOADING
 } from '../types';
 
@@ -12,8 +13,9 @@ import {
 const GalleryState = props => {
     const initialState = {
         galleryItems: [],
-        galleryItem: {},
-        loading: false
+        galleryItem: [],
+        galleryItemId: 0,
+        loading: false,
     };
 
     const [state, dispatch] = useReducer(GalleryReducer, initialState);
@@ -32,6 +34,14 @@ const GalleryState = props => {
         });
     };
 
+    //set single gallery item id
+    const setItemId = id => {
+        dispatch({
+            type: SET_ITEM_ID,
+            payload: id
+        });
+
+    }
 
     // Get single gallery item
     const getItem = async id => {
@@ -56,9 +66,11 @@ const GalleryState = props => {
             value={{
                 galleryItems: state.galleryItems,
                 galleryItem: state.galleryItem,
+                galleryItemId: state.galleryItemId,
                 loading: state.loading,
                 getItems,
-                getItem
+                getItem,
+                setItemId,
             }}
         >
             {props.children}
