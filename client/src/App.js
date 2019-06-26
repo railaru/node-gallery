@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Navbar from './components/Navbar'
+import Navbar from './components/holders/Navbar'
 
 import Home from './pages/Home'
 import SingleItem from './pages/SingleItem'
@@ -20,7 +20,7 @@ function App() {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
-              <Route exact path='/items/:item' component={SingleItem} />
+              <Route exact path='/gallery/:item' component={SingleItem} />
               <Route component={NotFound} />
             </Switch>
           </div>

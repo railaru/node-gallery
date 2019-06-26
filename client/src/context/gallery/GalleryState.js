@@ -4,6 +4,7 @@ import GalleryContext from './GalleryContext';
 import GalleryReducer from './GalleryReducer';
 import {
     GET_ITEMS,
+    GET_ITEM,
     SET_LOADING
 } from '../types';
 
@@ -11,6 +12,7 @@ import {
 const GalleryState = props => {
     const initialState = {
         galleryItems: [],
+        galleryItem: {},
         loading: false
     };
 
@@ -30,15 +32,33 @@ const GalleryState = props => {
         });
     };
 
+
+    // Get single gallery item
+    const getItem = async id => {
+        setLoading();
+
+        const res = await axios.get(
+            `http://localhost:5000/api/items/${id}`
+        );
+
+        dispatch({
+            type: GET_ITEM,
+            payload: res.data
+        });
+    };
+
     // Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING });
 
+    //return state inside context
     return (
         <GalleryContext.Provider
             value={{
                 galleryItems: state.galleryItems,
+                galleryItem: state.galleryItem,
                 loading: state.loading,
-                getItems
+                getItems,
+                getItem
             }}
         >
             {props.children}

@@ -1,11 +1,15 @@
 import React from 'react'
+import uuid from 'uuid'
+import { Link } from 'react-router-dom';
 
 export default function Card(props) {
 
-    const { title, img, description, tags } = props
+    const { id, title, img, description, tags } = props
 
-    return (
-        <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-4 px-2 cursor-pointer'>
+    return (    
+        <Link 
+            className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-4 px-2 cursor-pointer' 
+            to={'gallery/' + id}>
             <div className="rounded overflow-hidden shadow hover:shadow-md">
                 <img className="w-full" src={img} alt="" />
                 <div className="px-6 py-4">
@@ -17,7 +21,7 @@ export default function Card(props) {
                 <div className="px-6 py-4">
                     {
                         tags.map(tag => (
-                            <span className="
+                            <span key={uuid()} className="
                                 inline-block 
                                 mt-2 
                                 bg-gray-200 
@@ -35,6 +39,6 @@ export default function Card(props) {
                     }
                 </div>
             </div>
-        </div>
+        </Link>        
     )
 }

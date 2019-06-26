@@ -1,24 +1,27 @@
 import React, { useContext, useEffect } from 'react'
-import galleryContext from '../context/gallery/GalleryContext'
-import Card from './Card'
+import galleryContext from '../../context/gallery/GalleryContext'
+import Card from '../doers/Card'
 
 export default function Gallery() {
 
     const GalleryContext = useContext(galleryContext);
 
+    const { loading, galleryItems, getItems } = GalleryContext
+
     useEffect(() => {
-        GalleryContext.getItems()
+        getItems()
     }, [])
 
-    if (GalleryContext.loading) {
+    if (loading) {
         return <div>loading...</div>
     } else {
 
         return (
             <div className='flex flex-wrap -mx-2'>
                 {
-                    GalleryContext.galleryItems.map(({ id, title, img, description, tags }) => (
+                    galleryItems.map(({ id, title, img, description, tags }) => (
                         <Card
+                            id={id}
                             key={id}
                             title={title}
                             img={img}
