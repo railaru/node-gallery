@@ -17,7 +17,7 @@ export default function Gallery() {
     } else {
 
         return (
-            <div className='flex flex-wrap -mx-2'>
+            <div className='flex flex-wrap -mx-2 mt-6'>
                 {
                     galleryItems.map(({ id, title, img, description, tags }) => (
                         <Card

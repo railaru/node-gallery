@@ -15,7 +15,7 @@ export default function GalleryItem() {
     }, [])
 
     return (
-        <div>
+        <div className='max-w-md'>
             {
                 galleryItem.map(({ id, title, img, description, tags }) => (
                     <Card
