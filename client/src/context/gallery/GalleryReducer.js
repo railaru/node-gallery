@@ -1,7 +1,8 @@
 import {
     GET_ITEMS,
     GET_ITEM,
-    SET_ITEM_ID
+    SET_ITEM_ID,
+    SET_LOADING
 } from '../types';
 
 export default (state, action) => {
@@ -23,6 +24,11 @@ export default (state, action) => {
             return {
                 ...state,
                 galleryItemId: action.payload,
+            };
+        case SET_LOADING:
+            return {
+                ...state,
+                loading: true
             };
         default:
             return state;
