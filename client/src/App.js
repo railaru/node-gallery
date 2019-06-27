@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import GalleryState from './context/gallery/GalleryState'
+
 import Navbar from './components/holders/Navbar'
 
 import Home from './pages/Home'
 import SingleItem from './pages/SingleItem'
 import About from './pages/About'
 import NotFound from './pages/Notfound'
-
-import GalleryState from './context/gallery/GalleryState'
 
 function App() {
   return (
